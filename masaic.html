@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>masaic</title>
+	<meta charset="utf-8">
+	<script type="text/javascript" src="jQuery.js"></script>
+
+</head>
+<body>
+
+<script type="text/javascript">
+var num=5;
+
+function myFunction()
+{
+		for (var i = 0; i < 20; i++) 
+		{
+			loopwork(i);
+		};
+
+		num++;
+
+		if (num==8) 
+		{
+			num=4;
+
+		};
+
+	
+	
+	
+
+}
+
+function loopwork(i)
+{
+	document.getElementById("next").disabled=true;
+	document.getElementById("wall"+String(i)+'t').style.backgroundImage=document.getElementById("wall"+String(i)).style.backgroundImage;
+	$("#wall"+String(i)+'t').show();
+	var data="url("+"wallpaper0"+String(num)+"\.jpg"+')';
+	document.getElementById("wall"+String(i)).style.backgroundImage=data;
+	var timeControl = (i%8==0 || i%8==2 || i%8==5 || i%8==7) ;
+	$("#wall"+String(i)+'t').delay(timeControl*300).slideUp();
+	document.getElementById("next").disabled=false;
+	
+}
+
+</script>
+
+<!--  -->
+<button id="next" type="button" onclick="myFunction()">下一张</button>
+<div style="position:absolute;height:525px;width: 840px;left:0px;top:50px;">
+	<script type="text/javascript">
+
+	for (var i = 0; i < 20; i++) 
+	{
+		document.write("<div id=\"wall"+String(i)+"\"></div>");
+		document.write("<div id=\"wall"+String(i)+"t\"></div>");
+		var tempElement=document.getElementById("wall"+String(i));
+		var tempTopElement=document.getElementById("wall"+String(i)+'t');
+		tempTopElement.style.backgroundImage=tempElement.style.backgroundImage="url(wallpaper04.jpg)";
+		tempTopElement.style.position=tempElement.style.position="absolute";
+		tempTopElement.style.height=tempElement.style.height="105px";
+		tempTopElement.style.width=tempElement.style.width="210px";
+		tempTopElement.style.left=tempElement.style.left=String((i%4)*210)+"px";
+		tempTopElement.style.top=tempElement.style.top=String(Math.floor((i/4))*105)+"px";
+		tempTopElement.style.backgroundPosition=tempElement.style.backgroundPosition='-'+tempElement.style.left+' '+'-'+tempElement.style.top;
+
+	};
+
+	</script>
+</div>
+</body>
+</html>
